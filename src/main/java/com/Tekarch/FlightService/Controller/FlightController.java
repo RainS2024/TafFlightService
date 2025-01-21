@@ -2,6 +2,7 @@ package com.Tekarch.FlightService.Controller;
 
 import com.Tekarch.FlightService.DTO.FlightDto;
 import com.Tekarch.FlightService.Service.FlightService;
+import jakarta.validation.Valid;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,7 +32,7 @@ public class FlightController {
     }
 
     @PostMapping
-    public ResponseEntity<FlightDto> createFlight(@RequestBody FlightDto flightDto) {
+    public ResponseEntity<FlightDto> createFlight(@Valid @RequestBody FlightDto flightDto) {
         FlightDto createdFlight = flightService.createFlight(flightDto);
         return ResponseEntity.status(HttpStatus.CREATED).body(createdFlight);
     }
