@@ -10,9 +10,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+
 import java.util.List;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping("/api/flights")
 public class FlightController {
     private static final Logger logger = LogManager.getLogger(FlightController.class);
@@ -30,6 +32,19 @@ public class FlightController {
         FlightDto flight = flightService.getFlightById(flightId);
         return ResponseEntity.ok(flight);
     }
+
+//    @GetMapping("/search")
+//    public ResponseEntity<Page<FlightDto>> searchFlights(
+//            @RequestParam String departure,
+//            @RequestParam String arrival,
+//            @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate departureTime,
+//            @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate arrivalTime,
+//            @RequestParam(defaultValue = "0") int page,
+//            @RequestParam(defaultValue = "10") int size
+//    ) {
+//        Page<FlightDto> flights = flightService.findFlights(departure, arrival, departureTime, arrivalTime, page, size);
+//        return ResponseEntity.ok(flights);
+//    }
 
     @PostMapping
     public ResponseEntity<FlightDto> createFlight(@Valid @RequestBody FlightDto flightDto) {
