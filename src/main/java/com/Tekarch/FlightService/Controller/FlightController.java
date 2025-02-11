@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@CrossOrigin(origins = "http://tekair-frontendapp.s3-website-us-west-1.amazonaws.com/")
+@CrossOrigin(origins = "*")
 @RequestMapping("/api/flights")
 public class FlightController {
     private static final Logger logger = LogManager.getLogger(FlightController.class);
